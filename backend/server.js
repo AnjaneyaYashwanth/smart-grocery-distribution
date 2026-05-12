@@ -4,7 +4,9 @@ const fs = require("fs");
 const path = require("path");
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: "*"
+}));
 app.use(express.json());
 
 const STATIC_FILE = path.join(__dirname, "data/static.json");
@@ -213,7 +215,21 @@ app.post("/generate-receipt/:id", (req, res) => {
   res.json({ message: "Receipt generated" });
 });
 
+/* ================= RESET DATA ================= */
+app.post("/reset", (req, res) => {
+  try {
+    writeOrders([]);
+    writeReceipts([]);
+
+    res.json({ message: "All data reset successfully" });
+  } catch (err) {
+    res.status(500).json({ error: "Reset failed" });
+  }
+});
+
 /* ================= SERVER ================= */
-app.listen(5000, () =>
-  console.log("Server running on http://localhost:5000")
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () =>
+  console.log(`Server running on port ${PORT}`)
 );

@@ -249,23 +249,51 @@ function App() {
       doc.setFont(undefined, "normal");
 
       grouped[city].forEach(r => {
-        y += 8;
+        y += 10;
 
         doc.setFontSize(12);
         doc.text(`Order: ${r.orderCode}`, 10, y);
 
         y += 6;
 
+        // ===== TABLE HEADER =====
+        doc.setFontSize(11);
+        doc.setFont(undefined, "bold");
+
+        doc.text("Item", 12, y);
+        doc.text("Qty", 90, y, { align: "right" });
+        doc.text("Price", 130, y, { align: "right" });
+        doc.text("Total", 180, y, { align: "right" });
+
+        doc.setFont(undefined, "normal");
+
+        y += 3;
+        doc.line(10, y, 200, y);
+
+        y += 8;
+
+        // ===== ITEMS =====
         r.items.forEach(it => {
-          doc.text(
-            `${it.name} (${it.quantity}) → Rs ${it.price} x ${it.quantity} = Rs ${it.total}`,
-            12,
-            y
-          );
-          y += 6;
+          doc.text(it.name, 12, y);
+
+          doc.text(String(it.quantity), 90, y, { align: "right" });
+
+          doc.text(`Rs ${it.price}`, 130, y, { align: "right" });
+
+          doc.text(`Rs ${it.total}`, 180, y, { align: "right" });
+
+          y += 8;
         });
 
-        doc.text(`Total: Rs ${r.totalAmount}`, 12, y);
+        y += 5;
+        doc.line(10, y, 200, y);
+
+        y += 8;
+
+        doc.setFont(undefined, "bold");
+        doc.text(`Total: Rs ${r.totalAmount}`, 180, y, { align: "right" });
+
+        doc.setFont(undefined, "normal");
 
         y += 8;
 

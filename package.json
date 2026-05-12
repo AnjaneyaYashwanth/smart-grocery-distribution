@@ -1,0 +1,14 @@
+{
+  "name": "grocery-system",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "npx concurrently -n BACKEND,FRONTEND -c green,blue \"cd backend && node server.js\" \"cd frontend && npm run dev\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  },
+  "dependencies": {
+    "jspdf": "^4.2.1"
+  }
+}

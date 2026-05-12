@@ -1,0 +1,66 @@
+:root {
+  --text: #6b6375;
+  --text-h: #08060d;
+  --bg: #fff;
+  --border: #e5e4e7;
+
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+/* ================= RESET ================= */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+
+  overflow-x: hidden;
+  overflow-y: auto;   /* 🔥 IMPORTANT FIX */
+
+  background: #f4f6f9;
+}
+
+/* 🔥 ROOT FIX */
+#root {
+  width: 100%;
+  min-height: 100vh;   /* 🔥 ensures page expands */
+
+  margin: 0;
+  padding: 0;
+
+  display: block;
+
+  overflow: visible;   /* 🔥 CRITICAL */
+}
+
+/* HEADINGS */
+h1, h2 {
+  font-weight: 500;
+  color: var(--text-h);
+}
+
+h1 {
+  font-size: 48px;
+  margin: 20px 0;
+}
+
+h2 {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+/* TEXT */
+p {
+  margin: 0;
+}
+
+/* CODE */
+code {
+  font-family: monospace;
+  background: #f4f3ec;
+  padding: 4px 8px;
+  border-radius: 4px;
+}

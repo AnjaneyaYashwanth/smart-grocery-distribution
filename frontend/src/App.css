@@ -1,0 +1,632 @@
+/* ================= RESET ================= */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f6f9;
+  overflow-x: hidden;
+}
+
+/* 🔥 ALLOW OVERFLOW EVERYWHERE */
+#root,
+.card,
+.school-layout,
+.left-panel {
+  overflow: visible !important;
+}
+
+/* ================= HEADER ================= */
+.header {
+  width: 100%;
+  padding: 26px 0;
+  background: #1e3a5f;
+  color: white;
+  text-align: center;
+  font-size: 36px;
+  font-weight: 600;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+}
+
+/* ================= TABS ================= */
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  padding: 18px;
+}
+
+.tabs button {
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  background: #e5e7eb;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.tabs button:hover {
+  background: #cbd5f5;
+}
+
+/* ================= MAIN ================= */
+.card {
+  width: 100%;
+  padding: 20px 60px;
+}
+
+/* ================= LAYOUT ================= */
+.school-layout {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 40px;
+  align-items: start;
+}
+
+/* ================= LEFT ================= */
+.left-panel h2 {
+  text-align: center;
+}
+
+/* ================= DROPDOWN ================= */
+.dropdown-container {
+  position: relative;
+  margin: 20px auto;
+  width: 100%;
+  max-width: 500px;
+}
+
+/* HEADER */
+.dropdown-header {
+  padding: 14px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
+  background: white;
+  font-weight: 500;
+}
+
+/* 🔥 FINAL FIX — NO CLIPPING EVER */
+.dropdown-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+
+  width: 100%;
+  max-height: 250px;
+
+  overflow-y: auto;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+
+  padding: 10px;
+  margin-top: 8px;
+
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+
+  z-index: 999999; /* 🔥 EXTREME FIX */
+}
+
+/* ITEMS */
+.dropdown-item {
+  padding: 8px;
+  background: #f1f5f9;
+  border-radius: 6px;
+  cursor: pointer;
+  text-align: center;
+  transition: 0.2s;
+}
+
+.dropdown-item:hover {
+  background: #dbeafe;
+}
+
+/* SCROLLBAR */
+.dropdown-list::-webkit-scrollbar {
+  width: 6px;
+}
+.dropdown-list::-webkit-scrollbar-thumb {
+  background: #cbd5f5;
+  border-radius: 10px;
+}
+
+/* ================= ITEMS ================= */
+.items-grid {
+  display: grid;
+  gap: 22px;
+  margin-top: 20px;
+}
+
+@media (min-width: 1400px) {
+  .items-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+@media (max-width: 1399px) {
+  .items-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 900px) {
+  .items-grid { grid-template-columns: repeat(2, 1fr); }
+
+  .school-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .right-panel {
+    position: static;
+  }
+}
+
+@media (max-width: 500px) {
+  .items-grid { grid-template-columns: 1fr; }
+}
+
+/* ================= ITEM CARD ================= */
+.item-card {
+  background: white;
+  padding: 20px;
+  border-radius: 14px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  transition: 0.25s;
+}
+
+.item-card:hover {
+  transform: translateY(-4px);
+}
+
+/* ================= RIGHT PANEL ================= */
+.right-panel {
+  background: white;
+  padding: 22px;
+  border-radius: 14px;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 20px;
+}
+
+/* ================= CART ================= */
+.cart-box {
+  background: #f8fafc;
+  padding: 16px;
+  border-radius: 10px;
+}
+
+.cart-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+}
+
+/* ================= BUTTONS ================= */
+.btn-primary {
+  width: 100%;
+  margin-top: 18px;
+  padding: 14px;
+  background:#1e3a5f;
+  color:white;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+}
+
+/* ================= ADMIN ================= */
+.admin-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); /* increased */
+  gap: 24px;
+}
+
+.admin-card {
+  background: white;
+  padding: 26px;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  border: 1px solid #e5e7eb;
+}
+
+/* ================= SUPPLIER ================= */
+.supplier-card {
+  background: white;
+  padding: 26px;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  border: 1px solid #e5e7eb;
+}
+
+/* ================= BUTTON EFFECT ================= */
+button {
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+button:hover {
+  transform: scale(1.04);
+}
+
+.reject-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.reject-row span {
+  color: red;
+  font-weight: bold;
+}
+
+/* ORDER CARD UI */
+.order-card {
+  background: white;
+  border-radius: 12px;
+  padding: 16px;
+  margin-top: 15px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+/* HEADER */
+.order-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+/* STATUS */
+.status {
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+}
+
+.status.delivered {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+.status.completed {
+  background: #dbeafe;
+  color: #2563eb;
+}
+
+/* ITEMS */
+.order-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-top: 1px solid #eee;
+}
+
+/* TEXT */
+.item-stats {
+  display: flex;
+  gap: 10px;
+  font-size: 13px;
+}
+
+.item-stats .accepted { color: #2563eb; }
+.item-stats .rejected { color: #dc2626; }
+
+/* INPUT */
+.accept-box {
+  display: flex;
+  gap: 6px;
+}
+
+.accept-box input {
+  width: 80px;
+  padding: 5px;
+}
+
+/* EMPTY */
+.empty {
+  color: #777;
+  margin-bottom: 10px;
+}
+
+/* ================= 🔥 STRONG UI UPGRADE ================= */
+
+/* Page background */
+body {
+  background: linear-gradient(135deg, #eef2ff, #f8fafc);
+}
+
+/* Header (bold + attractive) */
+.header {
+  background: linear-gradient(135deg, #1e3a8a, #3b82f6) !important;
+  color: white;
+  letter-spacing: 1px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+}
+
+/* Tabs (modern pill style) */
+.tabs button {
+  background: white;
+  border: 1px solid #e5e7eb;
+  font-weight: 500;
+}
+
+.tabs button:hover {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* LEFT SECTION TITLE */
+.left-panel h2 {
+  color: #1e293b;
+}
+
+/* Dropdown header */
+.dropdown-header {
+  border: 2px solid #e5e7eb;
+  background: #ffffff;
+  transition: 0.2s;
+}
+
+.dropdown-header:hover {
+  border-color: #3b82f6;
+}
+
+/* Dropdown items */
+.dropdown-item {
+  background: #f8fafc;
+}
+
+.dropdown-item:hover {
+  background: #3b82f6 !important;
+  color: white;
+}
+
+/* Item cards (more attractive) */
+.item-card {
+  border-radius: 16px;
+  border: none;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  transition: all 0.25s ease;
+}
+
+.item-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 35px rgba(0,0,0,0.15);
+}
+
+/* Right panel (card feel) */
+.right-panel {
+  background: linear-gradient(135deg, #ffffff, #f8fafc);
+  border-radius: 18px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+}
+
+/* Cart box */
+.cart-box {
+  background: #eef2ff;
+  border-radius: 12px;
+}
+
+/* Cart rows */
+.cart-row {
+  font-weight: 500;
+}
+
+/* Primary button (THIS IS THE BIG VISUAL CHANGE) */
+.btn-primary {
+  background: linear-gradient(135deg, #3b82f6, #1e40af) !important;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  border-radius: 12px;
+}
+
+.btn-primary:hover {
+  transform: scale(1.04);
+  box-shadow: 0 10px 25px rgba(37, 99, 235, 0.5);
+}
+
+/* Admin cards */
+.admin-card,
+.supplier-card {
+  border-radius: 16px;
+  border: none;
+  background: linear-gradient(135deg, #ffffff, #f8fafc);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+}
+
+/* Rejected items highlight */
+.reject-row span {
+  color: #ef4444;
+  font-weight: bold;
+}
+
+/* Order cards */
+.order-card {
+  background: linear-gradient(135deg, #ffffff, #f1f5f9);
+  border-radius: 16px;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.1);
+}
+
+/* Status badges */
+.status.delivered {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+.status.completed {
+  background: #dbeafe;
+  color: #2563eb;
+}
+/* ================= 🎯 FIX ONLY 3 BUTTONS ================= */
+
+/* Add button (inside item cards) */
+.item-card button {
+  margin-top: 8px;
+  padding: 6px 12px;
+  background: linear-gradient(135deg, #22c55e, #15803d);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.item-card button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(34, 197, 94, 0.4);
+}
+
+
+/* Assign Order button */
+.admin-card button {
+  margin-top: 10px;
+  padding: 8px 14px;
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.admin-card button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(245, 158, 11, 0.4);
+}
+
+
+/* Deliver button */
+.supplier-card button {
+  margin-top: 10px;
+  padding: 8px 14px;
+  background: linear-gradient(135deg, #06b6d4, #0e7490);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.supplier-card button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(6, 182, 212, 0.4);
+}
+
+/* ================= 🔥 FINAL ADMIN + SUPPLIER UI FIX ================= */
+
+/* Fix input alignment */
+.admin-card input {
+  width: 60px;
+  padding: 4px;
+}
+
+/* Better total styling */
+.admin-card div:last-child {
+  margin-top: 10px;
+  font-weight: 700;
+  font-size: 16px;
+  color: #1e3a8a;
+}
+
+/* Button grouping */
+.admin-card button {
+  margin-right: 8px;
+}
+
+/* ================= SUPPLIER IMPROVEMENTS ================= */
+
+/* Highlight total */
+.supplier-card div:last-child {
+  margin-top: 10px;
+  font-weight: 700;
+  color: #1e3a8a;
+}
+
+/* Receipt style (looks like invoice) */
+.supplier-card {
+  border-left: 4px solid #3b82f6;
+}
+
+/* Section spacing */
+h3 {
+  margin-top: 30px;
+}
+
+/* ================= SMALL UI POLISH ================= */
+
+/* Fix cramped admin cards */
+.admin-card {
+  line-height: 1.6;
+}
+
+/* Better spacing for inputs */
+.admin-card input {
+  margin-left: 5px;
+}
+
+/* Slight hover improvement */
+.admin-card:hover,
+.supplier-card:hover {
+  transform: translateY(-4px);
+  transition: 0.2s;
+}
+
+.admin-card h4,
+.supplier-card h4 {
+  margin-bottom: 12px;
+  font-size: 18px;
+  color: #1e293b;
+}
+
+.item-name {
+  font-weight: 500;
+}
+
+.item-input {
+  width: 60px;
+  padding: 5px;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  text-align: center;
+}
+
+.item-price {
+  text-align: right;
+}
+
+/* ===== FIXED ROW LAYOUT ===== */
+
+.item-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  gap: 10px;
+}
+
+.item-name {
+  flex: 1;
+  font-weight: 500;
+}
+
+.item-price {
+  min-width: 180px;       /* 🔥 gives space */
+  text-align: right;
+  font-size: 14px;
+  color: #374151;
+  white-space: nowrap;    /* 🔥 prevents line break */
+}
+
+/* ===== SMALL CARD (for Completed + Receipts only) ===== */
+.small-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
